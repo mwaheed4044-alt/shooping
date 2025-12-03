@@ -1,0 +1,40 @@
+{
+    "nunito": {
+        "300_italic": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/nunito_300_italic_1cbee99640d022fb4f6d976376031b0b",
+        "italic": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/nunito_italic_73424994d9a0d36f6a9693c475fb71f3",
+        "600_italic": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/nunito_600_italic_67f0d6fee18f75bc389f799a76427197",
+        "bold_italic": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/nunito_bold_italic_64c0a35799a32ba8fc33372ea7a1b037",
+        "300": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/nunito_300_94c0e0cc951325d5fe102516071deddc",
+        "normal": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/nunito_normal_a79d5d478ff144acb132596b30109135",
+        "600": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/nunito_600_2ca724e4e1a9f8e2ed8bb752920a8be4",
+        "bold": "nunito_bold_00e56b884f6187001db248b275d34500"
+    },
+    "open sans": {
+        "300_italic": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/open_sans_300_italic_fb839a6737a3d812b3f74d140e72e18b",
+        "italic": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/open_sans_italic_a9a031e0e01ce3a822bda8887907928d",
+        "600_italic": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/open_sans_600_italic_cf7d21d27c2cfc17df9c3ee9ff5b10b5",
+        "bold_italic": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/open_sans_bold_italic_debdc9993ff0ef8799a91c30e4257b6b",
+        "300": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/open_sans_300_98d9ea7008a4804226a1296d99d9edf0",
+        "normal": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/open_sans_normal_da59a9c5214844a109aa8ec3d9a30e3a",
+        "600": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/open_sans_600_e5e3459bb957db2425daab2849f40fbf",
+        "bold": "open_sans_bold_b5b2dda2226a6db813dac7d3e6a67f3c"
+    },
+    "poppins": {
+        "300_italic": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/poppins_300_italic_3f86d3dce5a210bf8f82d35fdf255074",
+        "italic": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/poppins_italic_33813c2ea55e4f668502517c6e271b22",
+        "500_italic": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/poppins_500_italic_692e8815dde289548fc08bbe04c02f56",
+        "600_italic": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/poppins_600_italic_f2b2ee9bb8e96f31ff0d02ec8ea1488d",
+        "bold_italic": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/poppins_bold_italic_afb71d6bdf7bd995d770316134965ed8",
+        "300": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/poppins_300_2e2883f4cf5280db5a8f5b456d9f76e7",
+        "normal": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/poppins_normal_59578db0d134e5107911b0772fcd36b3",
+        "500": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/poppins_500_e357e72d1459b7129a703bd036127015",
+        "600": "C:\\xampp\\htdocs\\maker-cv\\storage\\fonts\/poppins_600_7d20ab77d986921f47f6842ca5ca81b1",
+        "bold": "poppins_bold_e92875066bf07ed4e7ee92062224b42c"
+    },
+    "boxicons": {
+        "normal": "boxicons_normal_fada72701e30ddb0f548f2d3b708b34d"
+    },
+    "remixicon": {
+        "normal": "remixicon_normal_b25d2ecf10fc37bc592854b9d03174c4"
+    }
+}
