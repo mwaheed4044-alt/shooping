@@ -11,8 +11,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{url('public/admin/assets/img/logo.png')}}" rel="icon">
-  <link href="{{url('public/admin/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <link href="{{url('public/admin/assets/img/news-1.jpg')}}" rel="icon">
+  <!-- <link href="{{url('public/admin/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon"> -->
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
        
 
@@ -34,8 +34,13 @@
 
   <!-- Template Main CSS File -->
   <link href="{{url('public/admin/assets/css/style.css')}}" rel="stylesheet">
-
+<link rel="stylesheet" href="{{ url('public/admin/assets/css/toastr.min.css') }}">
+<script src="{{ url('public/admin/assets/js/toastr.min.js') }}"></script>
 </head>
 
-
+<script>
+    @if(session('status'))
+        toastr.success("{{ session('status') }}");
+    @endif
+</script>
 

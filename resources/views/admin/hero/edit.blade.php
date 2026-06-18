@@ -1,13 +1,13 @@
 
+
   @include('admin/inc/header')
-  @include('admin/inc/alert')
 
 <div class="col-lg-8 offset-2 " style="margin-top:100px">
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title">Personal Details</h5>
+      <h5 class="card-title">Personal Edit</h5>
 
-      <form id="personalForm" action="{{url('admin/hero/insert')}}" method="post" enctype="multipart/form-data">
+      <form id="personalForm" action="{{url('admin/hero/update',$edit->id)}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="row mt-3">
           <div class="col-md-3 text-center">
@@ -18,6 +18,7 @@
                 <i class="bi bi-upload"></i>
               </label>
               <input type="file" id="profileImage" name="image" accept="image/*" style="display:none;">
+              <input type="file" id="profileImage" name="old_img" value="{{$edit->image}}"accept="image/*" style="display:none;">
               <button type="button" class="btn btn-danger btn-sm" id="removeImage" title="Remove my profile image">
                 <i class="bi bi-trash"></i>
               </button>
@@ -28,21 +29,21 @@
             <div class="row">
               <div class="col-6">
                 <label class="form-label">First Name</label>
-                <input type="text" name="name" class="form-control" value="">
+                <input type="text" name="name" class="form-control" value="{{$edit->name}}">
               </div>
               <div class="col-6">
                 <label class="form-label">CNIC</label>
-                <input type="text" name="cinc" class="form-control">
+                <input type="text" name="cinc" class="form-control" value="{{$edit->cinc}}">
               </div>
             </div>
             <div class="row mt-2">
               <div class="col-6">
                 <label class="form-label">Email</label>
-                <input type="text" name="email" class="form-control">
+                <input type="text" name="email" class="form-control" value="{{$edit->email}}">
               </div>
               <div class="col-6">
               <label class="form-label">Father Name</label>
-              <input type="text" name="father" class="form-control">
+              <input type="text" name="father" class="form-control" value="{{$edit->father}}">
             </div>
             </div>
           </div>
@@ -53,17 +54,17 @@
           <div class="row">
             <div class="col-6">
               <label class="form-label">Address</label>
-              <input type="text" name="address" class="form-control">
+              <input type="text" name="address" class="form-control" value="{{$edit->address}}">
             </div>
             <div class="col-6">
               <label class="form-label">Date of Birth</label>
-              <input type="" name="date_birth" class="form-control">
+              <input type="" name="date_birth" class="form-control" value="{{$edit->date_birth}}">
             </div>
           </div>
           <div class="row mt-2">
             <div class="col-6">
               <label class="form-label">Gender</label>
-              <select class="form-select" name="gender">
+              <select class="form-select" name="gender" value="{{$edit->gender}}">
                 <option selected disabled>Choose...</option>
                 <option>Male</option>
                 <option>Female</option>
@@ -71,23 +72,23 @@
             </div>
             <div class="col-6">
               <label class="form-label">Religion</label>
-              <input type="text" name="religation" class="form-control">
+              <input type="text" name="religation" class="form-control" value="{{$edit->religation}}">
             </div>
           </div>
           <div class="row mt-2">
             <div class="col-6">
               <label class="form-label">Nationality</label>
-              <input type="text" name="nationality" class="form-control">
+              <input type="text" name="nationality" class="form-control" value="{{$edit->nationality}}">
             </div>
             <div class="col-6">
               <label class="form-label">Marital Status</label>
-              <input type="text" name="status" class="form-control">
+              <input type="text" name="status" class="form-control" value="{{$edit->status}}">
             </div>
           </div>
           <div class="row mt-2">
             <div class="col-12">
               <label class="form-label">Phone</label>
-              <input type="text" name="phone" class="form-control">
+              <input type="text" name="phone" class="form-control" value="{{$edit->phone}}">
             </div>
       
           </div>

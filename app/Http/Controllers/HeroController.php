@@ -8,7 +8,7 @@ class HeroController extends Controller
 {
     public function list(){
         // dd('jjd');
-        $data = DB::table('cv_table')->orderBy('id',"desc")->paginate(5);
+        $data = DB::table('students')->orderBy('id',"desc")->paginate(5);
         return view('admin/hero/list',compact('data'));
     }
     public function create(){
@@ -18,17 +18,40 @@ class HeroController extends Controller
     public function detail($id){
         // dd('dd');
      
-    $cv = DB::table('cv_table')->where('id', $id)->first();
+    $students = DB::table('students')->where('id', $id)->first();
+    // dd($students);
 
-    // agar related tables mein cv_id field rakhi hai:
-    $education   = DB::table('education')->where('cv_id', $id)->get();
-    $skills      = DB::table('skill')->where('cv_id', $id)->get();
-    $work  = DB::table('work')->where('cv_id', $id)->get();
-    // dd($work);
-    $langu  = DB::table('language')->where('cv_id', $id)->get();
-    // ... aur jitne bhi related tables hain
+   
+    $edu  = DB::table('educations')->where('stu_id',$students->id)->get();
+    $skill  = DB::table('skills')->where('stu_id',$students->id)->get();
+    $work  = DB::table('works')->where('stu_id',$students->id)->get();
+      $languages  = DB::table('languages')->where('stu_id',$students->id)->get();
+    // dd($skill);
+ 
+    
+ 
+   
 
-    return view('admin.hero.detail', compact('cv','education','skills','work','langu'));
+    return view('admin.hero.detail', compact('students','edu','work','skill','languages'));
+    }
+    public function cv($id){
+        // dd('dd');
+     
+    $students = DB::table('students')->where('id', $id)->first();
+    // dd($students);
+
+   
+    $education  = DB::table('educations')->where('stu_id',$students->id)->get();
+    $skills  = DB::table('skills')->where('stu_id',$students->id)->get();
+    $work  = DB::table('works')->where('stu_id',$students->id)->get();
+    $languages  = DB::table('languages')->where('stu_id',$students->id)->get();
+    // dd($skill);
+ 
+    
+ 
+   
+
+    return view('admin.hero.hello', compact('students','education','skills','work','languages'));
     }
   
   
@@ -36,6 +59,9 @@ class HeroController extends Controller
 {
     // dd($req->all());
  
+    
+    // ----- Image Upload -----
+  
     
     // ----- Image Upload -----
     if ($req->has('image')) {
@@ -47,9 +73,9 @@ class HeroController extends Controller
     }
 
     // ----- Personal Data Insert -----
-    $cv_id=DB::table('cv_table')->insertGetId(
+    $stu_id=DB::table('students')->insertGetId(
      [
-        'first_name'    => $req['first_name'],
+        'name'    => $req['name'],
         'cinc'     => $req['cinc'],
         'phone'         => $req['phone'],
         'email'         => $req['email'],
@@ -60,17 +86,69 @@ class HeroController extends Controller
         'status'=>$req['status'],
         'nationality'=>$req['nationality'],
         'father'=>$req['father'],
-        'religion'=>$req['religion'],
+        'religation'=>$req['religation'],
      
     ]);
     // dd($insert);
+      session()->put('stu_id', $stu_id);
+     
     
-    return redirect('admin/education/education/'.$cv_id)->with('status', 'persoanal added to successfully!');
+    return redirect('admin/education/education')->with('status','Personal Data Successfly !');
 
 
 }
+public function edit($id){
+    // dd('kk');
+    $edit=DB::table('students')->where('id',$id)->first();
+    // dd($edit);
+    return view('admin/hero/edit',compact('edit'));
+}
+public function update(Request $req ){
+    $id = $req->id;
+          //  dd($id);
+   $old_img= DB::table('students')->where('id',$id)->first();
+    $img = $old_img->image;
+    if($req->hasFile('image')){
+      $img = $req->image->getClientOriginalName();
+    //   dd($img);
+        $req->image->move('public/admin/image/hero',$img);
+    }
+
+    // dd($id);
+    $update =
+        [
+            'image'=>$img,
+         'name'    => $req->name,
+        'cinc'     => $req->cinc,
+        'phone'         => $req->phone,
+        'email'         => $req->email,
+        'address'       => $req->address,
+        'date_birth'    => $req->date_birth,
+  
+        'gender'=>$req->gender,
+        'status'=>$req->status,
+        'nationality'=>$req->nationality,
+        'father'=>$req->father,
+        'religation'=>$req->religation,
+
+    ];
+
+  
+    
+    DB::table('students')->where('id',$id)->update($update);
+ 
+    
+    //  dd($edu);
+   
+  session()->put('stu_id', $req->id);
+               
+            //    dd(session()->get('stu_id'));   
+             
+ 
+    return redirect('admin/education/edit')->with('status','data update ');
+}
 public function delete($id){
-  DB::table('cv_table')->where('id', $id)->delete();
+  DB::table('students')->where('id', $id)->delete();
   return back();
 }
 }   

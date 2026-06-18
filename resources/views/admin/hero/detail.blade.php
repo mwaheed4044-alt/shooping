@@ -2,252 +2,294 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Stylish CV with Image</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, sans-serif;
+<meta charset="UTF-8">
+<title>Modern CV</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<style>
+
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.cv-wrapper {
+    display: flex;
+    max-width: 950px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    overflow: hidden;
+}
+
+/* Sidebar */
+.cv-sidebar {
+    background: linear-gradient(180deg, #6a11cb 0%, #2575fc 100%);
+    color: #fff;
+    padding: 30px 25px;
+    width: 280px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+.cv-sidebar:hover {
+    background: linear-gradient(180deg, #2575fc 0%, #6a11cb 100%);
+}
+.cv-sidebar .photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+    overflow: hidden;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.cv-sidebar .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.cv-sidebar h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 6px;
+}
+.cv-sidebar p {
+    font-size: 14px;
+    margin: 4px 0;
+}
+.cv-sidebar h3 {
+    font-size: 16px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+    padding-bottom: 4px;
+    letter-spacing: 0.5px;
+}
+.cv-sidebar ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+.cv-sidebar ul li {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+/* Skills with gradient animated bars */
+.skill-bar {
+    background: rgba(255,255,255,0.25);
+    border-radius: 20px;
+    height: 14px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+}
+.skill-bar .progress {
+    height: 100%;
+    border-radius: 20px;
+    width: 0%;
+    background: linear-gradient(90deg, #ff6a00, #ee0979);
+    animation: fillSkill 1.2s forwards;
+}
+@keyframes fillSkill {
+    0% { width: 0%; }
+    100% { width: 80%; } /* Dynamically replace width using Blade if needed */
+}
+
+/* Main Content */
+.cv-main {
+    flex: 1;
+    padding: 40px 30px;
+    background: #f8f9fc;
+}
+.cv-section {
+    margin-bottom: 30px;
+}
+.cv-section h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #6a11cb;
+    margin-bottom: 18px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 6px;
+}
+
+/* Education & Work */
+.cv-edu, .cv-work {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+.cv-edu li, .cv-work li {
+    margin-bottom: 20px;
+}
+.cv-edu li span, .cv-work li span {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Timeline style for work */
+.timeline {
+    position: relative;
+    padding-left: 25px;
+    border-left: 3px solid #6a11cb;
+    margin-top: 15px;
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 25px;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -14px;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    background: #6a11cb;
+    border-radius: 50%;
+    border: 3px solid #fff;
+}
+.timeline-item h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+.timeline-item span {
+    font-size: 13px;
+    color: #555;
+}
+
+/* Print button */
+.print-btn {
+    margin-top: 20px;
+    border-radius: 25px;
+    padding: 8px 20px;
+    font-weight: 600;
+}
+@media print {
+    .print-btn { display: none; }
+}
+</style>
   
-    }.main{
-      border: 2px solid #000;
-      background: #fff;
-      box-shadow: 0 0 10px 0px;
-      margin-top:20px;
-      width: 900px;
-      margin-left:20px;
-    }
-  
-   
-  </style>
+
+
 </head>
 <body>
-  <div class="container">
-  
-    <div class="main " id="cv-section">
-       <div class="row justify-content-center " style="margin-top:30px">
-                  <div class="col-sm-9">
-                          
-
-                           
-                        
-                          <div class="row">
-                            <div class="col-4 ">
-                           <i class="bi bi-person-fill"></i> <strong>Name  :</strong> <br>
-                                <span>{{$cv->first_name}}</span>
-                           
-
-                            </div>
-                            <div class="col-4">
-                               <i class="bi bi-person-vcard"></i>  </i><strong>Cinc  :</strong> <br>
-                                <span>{{$cv->cinc}}</span>
-
-                            </div>
-                            <div class="col-4 ">
-                               <i class="bi bi-geo-alt-fill"></i> <strong>Address  :</strong><br>
-                                <span>{{$cv->address}}</span>
-                              
-                            </div>
-                          </div>
-                          <div class="row mt-3">
-                            <div class="col-4">
-                                    <i class="bi bi-telephone-fill"></i> <strong>Phone No  :</strong><br>
-                                <span>{{$cv->phone}}</span>
-                            </div>
-                            <div class="col-6">
-                                <i class="bi bi-envelope-fill"></i> <strong>Email  :</strong><br>
-                                <span>{{$cv->email}}</span>
-                            </div>
-                           
-                          </div>
-                           
-                               
-                          
-                      </div>
-                            <div class="col-sm-2 " >
-                              <div class="image">
-                                @if($cv->image)
-                                <img src="{{url('public/admin/image/hero/',$cv->image)}}"  width="130px" class="img-fluid" alt="">
-                                @else
-                                 <p style="font-size:90px;font-weight:bold;background-color:#d1d1d1">CV</p>
-                                 @endif
-                              </div>
-                            </div>
-                        <div class="row">
-                          <div class="col-12" style="margin-top:20px;padding-left:37px;padding-right:37px">
-                                  <h2 style="background-color:#d1d1d1; 
-                                            padding:10px; 
-                                            border-left:7px solid red; 
-                                            font-size:22px; 
-                                            font-weight:bold; 
-                                            margin:0;">
-                                    Personal
-                                  </h2>
-
-                                  <div class="row" style="margin-left:20px; margin-top:10px">
-                                    <div class="col-2 ">
-                                      <strong>Father’s Name</strong>     
-                                      <strong>Date of Birth</strong>
-                                      <strong>Gender</strong>
-                                      <strong>Nationality</strong>
-                                      <strong>Marital Status</strong>
-                                      <strong>Religion</strong>
-                                    </div>
-                                   
-                                    :<br>   
-                                    :<br>   
-                                    :<br>   
-                                    :<br>   
-                                    :<br>   
-                                    :<br>   
-                                    
-                                    <div class="col-3 ">
-                                       <span>{{$cv->father}}</span><br>
-                                       <span>{{$cv->date_birth}}</span><br>
-                                       <span>{{$cv->gender}}</span><br>
-                                       <span>{{$cv->nationality}}</span><br>
-                                       <span>{{$cv->status}}</span><br>
-                                       <span>{{$cv->religion}}</span>
-                                    </div>
-                                  </div>
-
-                            
-                          </div>
-                          <div class="col-12" style="margin-top:10px;padding-left:37px;padding-right:37px">
-                              <h2 style="background-color:#d1d1d1;
-                              border-left:7px solid red;
-                              padding:10px;font-size:22px;
-                              font-weight:bold;
-                              margin:0px;">
-                                Education</h2>
-                                <table class="table table-bordered mt-4">
-                                  <thead>
-                                    <tr>
-                                      <th>Degree Name</th>
-                                      <th>Board Name</th>
-                                      <th>Obtained Marks</th>
-                                      <th>Total Marks</th>
-                                      <th>Passing Year</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    @foreach ($education as $edu)
-                                      <tr>
-                                        <td>{{ $edu->degree }}</td>
-                                        <td>{{ $edu->school_collage_university }}</td>
-                                        <td>{{ $edu->obtaind_mark }}</td>
-                                        <td>{{ $edu->total }}</td>
-                                        <td>{{ $edu->start_date }}</td>
-                                      </tr>
-                                    @endforeach
-                                  </tbody>
-                                </table>
-
-                          </div>
-                          <div class="col-12" style="margin-top:10px;padding-left:37px;padding-right:37px">
-                                  <h2 style="background-color:#d1d1d1; 
-                                            padding:10px; 
-                                            border-left:7px solid red; 
-                                            font-size:22px; 
-                                            font-weight:bold; 
-                                            margin:0;">
-                                    Skills
-                                  </h2>
-                                  <ul style=" padding:15px; margin-left:20px;">
-                                     @foreach($skills as $skill)
-                                    <li><strong> {{$skill->skill_name}}</strong></li>
-                                    <!-- <li><strong>Skill Level   :</strong>   {{$skill->skill_level}}</li>
-                                    <li><strong>Experience Year   :</strong>  {{$skill->skill_experience}}</li> -->
-                                    @endforeach
-                                  </ul>
-                        </div>
-                          <div class="col-12" style="margin-top:10px;padding-left:32px;padding-right:32px">
-                                  <h2 style="background-color:#d1d1d1; 
-                                            padding:10px; 
-                                            border-left:7px solid red; 
-                                            font-size:22px; 
-                                            font-weight:bold; 
-                                            margin:0;">
-                                    Language
-                                  </h2>
-                                  <ul style="padding:15px; margin-left:20px;">
-                                   @foreach($langu as $lang)
-                                    <li><strong>{{$lang->language}}</strong></li>
-                                    @endforeach
-                                  </ul>
-                        </div>
-                          <div class="col-12" style="margin-top:10px;padding-left:32px;padding-right:32px">
-                                  <h2 style="background-color:#d1d1d1; 
-                                            padding:10px; 
-                                            border-left:7px solid red; 
-                                            font-size:22px; 
-                                            font-weight:bold; 
-                                            margin:0;">
-                                    Work Experience
-                                  </h2>
-                                     
-                                    <div class="row">
-                                      
-                                      <div class="col-6">
-
-                                      <ul style="padding:15px; margin-left:20px;">
-                                        @foreach($work as $works)
-                                              @if($works->job_title)
-                                                <li><strong>Job Title</strong></li>
-                                                <span style="margin-left:70px">{{ $works->job_title ?? '' }}</span>
-
-                                                <li><strong>Company</strong></li>
-                                                <span style="margin-left:70px">{{ $works->company ?? ''}}</span>
-
-                                                <li><strong>Duration</strong></li>
-                                                <span style="margin-left:70px">{{ $works->date_start ?? ''}}  {{ $works->date_end ?? ''}}</span>
-                                                <br><br>
-                                              @else
-                                                <p >Begniner</p>
-                                              @endif
-                                        @endforeach
-                                     
-                                            
-                                    </ul>
-
-                                      </div>
-                              
-        
-                                    </div>
-                                
-                        </div>
-                          <div class="col-12" style="margin-top:10px;padding-left:32px;padding-right:32px">
-                                  <h2 style="background-color:#d1d1d1; 
-                                            padding:10px; 
-                                            border-left:7px solid red; 
-                                            font-size:22px; 
-                                            font-weight:bold; 
-                                            margin:0;">
-                                    Interests
-                                  </h2>
-
-                                 <ul style="padding:15px; margin-left:20px;">
-                                  <li><strong>Cricket</strong></li>
-                                  <li><strong>Volleyball</strong></li>
-                                  <li><strong>Football</strong></li>
-                              </ul>
-
-                        </div>
-                      
-
-          </div>
-     </div>
-  </div>
-</body>
-</html>
-<div class="container">
-  <div class="row">
-    <div class="col-3 ">
-      <button onclick="window.print()" class="btn btn-outline-success d-print-none   mt-3">
-    🖨️ Print
-  </button>
-    </div>
-  </div>
+<!-- Color Picker (outside the CV wrapper) -->
+<div style="max-width: 950px; margin: 20px auto; text-align: center;" class="no-print">
+    <label for="sidebarColor" style="font-weight: bold; margin-right: 10px;">Select Sidebar Color: </label>
+    <input type="color" id="sidebarColor" value="#6a11cb" style="width: 50px; height: 30px; border: none; cursor: pointer;">
 </div>
 
+<style>
+/* Hide elements with the 'no-print' class when printing */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+}
+</style>  
+
+<!-- CV -->
+<div class="cv-wrapper">
+    <!-- Sidebar -->
+    <div class="cv-sidebar" id="cvSidebar">
+        <div class="photo">
+            @if($students->image)
+                <img src="{{ url('public/admin/image/hero/' . $students->image) }}" alt="Profile">
+            @else
+                <div style="width:120px;height:120px;background:#fff;color:#1e90ff;display:flex;align-items:center;justify-content:center;font-weight:bold;">CV</div>
+            @endif
+        </div>
+        <h2>{{ $students->name }}</h2>
+        <p><i class="bi bi-card-text"></i> CINC: {{ $students->cinc }}</p>
+        <p><i class="bi bi-geo-alt"></i> {{ $students->address }}</p>
+        <p><i class="bi bi-telephone"></i> {{ $students->phone }}</p>
+        <p><i class="bi bi-envelope"></i> {{ $students->email }}</p>
+
+        <h3>Skills</h3>
+        @foreach($skill as $row)
+        <p>{{ $row->skill_name }}</p>
+        <div class="skill-bar"><div class="progress" style="width:80%;"></div></div>
+        @endforeach
+
+        <h3>Languages</h3>
+        <ul>
+            @foreach($languages as $lang)
+            <li>{{ $lang->language }}</li>
+            @endforeach
+        </ul>
+
+        <h3>Interests</h3>
+        <ul>
+            <li>Cricket</li>
+            <li>Volleyball</li>
+            <li>Football</li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="cv-main">
+        <!-- Education -->
+        <div class="cv-section">
+            <h2>Education</h2>
+            <ul class="cv-edu">
+                @foreach($edu as $education)
+                <li>
+                    <h4>{{ $education->degree_name }}</h4>
+                    <span>{{ $education->board_name }} | {{ $education->obtaind_mark }}/{{ $education->total_mark }} | {{ $education->passing_year }}</span>
+                </li>
+                @endforeach
+            </ul>
+        </div>
+
+        <!-- Work Experience -->
+        <div class="cv-section">
+            <h2>Work Experience</h2>
+            <div class="timeline">
+                @if($work->where('job_title','!=',null)->count() > 0)
+                @foreach($work as $data)
+                    @if($data->job_title)
+                    <div class="timeline-item">
+                        <h4>{{ $data->job_title }} @ {{ $data->company }}</h4>
+                        <span>{{ $data->start_year }} - {{ $data->end_year }}</span>
+                    </div>
+                    @endif
+                @endforeach
+                @else
+                    <p>Beginner</p>
+                @endif
+            </div>
+        </div>
+
+        <button onclick="window.print()" class="btn btn-outline-primary print-btn">🖨️ Print</button>
+    </div>
+</div>
+
+<script>
+// Change sidebar color live
+const colorPicker = document.getElementById('sidebarColor');
+const sidebar = document.getElementById('cvSidebar');
+
+colorPicker.addEventListener('input', function() {
+    sidebar.style.background = colorPicker.value;
+});
+</script>
+
+    <!-- Main Content -->
+    
+
+        <!-- Work Experience -->
+    
 
 
+    </div>
+</div>
+
+</body>
+</html>

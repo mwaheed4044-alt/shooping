@@ -12,7 +12,7 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">first Name</th>
+                    <th scope="col">Name</th>
                     <th scope="col">address</th>
                     <th scope="col">Image</th>
                     <th scope="col">Action</th>
@@ -22,12 +22,16 @@
          @forelse($data as $row)
               <tr>
                   <th scope="row">{{$row->id}}</th>
-                  <td>{{ $row->first_name }}</td>
+                  <th scope="row">{{$row->name}}</th>
                   <td>{{ $row->address}}</td>
-                  <td><img src="{{url('public/admin/image/hero',$row->image)}}" class="img-fluid" width="40px "alt="img not"></td>
+                  <td>
+                    <img src="{{url('public/admin/image/hero',$row->image)}}"  width="40px" alt="">
+                  </td>
+                
                   <td>
 
                     <a href="{{url('admin/hero/detail',$row->id)}}"  class="btn btn-outline-warning btn-sm "><i class="ri-eye-fill"></i></a>
+                    <a href="{{url('admin/hero/hello',$row->id)}}"  class="btn btn-outline-info btn-sm "><i class="ri-eye-fill"></i></a>
                     <a href="{{url('admin/hero/edit',$row->id)}}"  class="btn btn-outline-success btn-sm "><i class="bx bxs-edit"></i></a>
                     <a href="{{url('admin/hero/delete',$row->id)}}"  class="btn btn-outline-danger btn-sm "><i class="ri-close-circle-fill"></i></a>
                    

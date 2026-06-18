@@ -56,3 +56,18 @@ function addLang() {
 }
 </script>
 @endsection
+  
+
+
+
+
+
+
+                    
+                <!-- ////Language/// -->
+             
+
+                <!-- Add more button -->
+                <div class="col-12 mt-3 text-center border p-0" style="height:40px; background-color:#99939359;">
+                    <p type="button" class="mt-2" onclick="addLang()">+ Add More Language</p>
+                </div>
